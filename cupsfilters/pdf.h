@@ -36,7 +36,7 @@ struct _cf_opt
   cf_opt_t *next;
 };
 
-typedef struct iterate_data_s		// *** Helper structure for PDF page iteration ***
+typedef struct iterate_data_s		// Helper structure for PDF page iteration
 {
   cf_pdf_t 	*pdf;				// PDF document
   pdfio_dict_t	*page_dict;		// Current page dictionary

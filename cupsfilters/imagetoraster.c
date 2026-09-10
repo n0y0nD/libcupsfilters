@@ -44,7 +44,7 @@
 // Types...
 //
 
-typedef struct                  // **** Document information ****¨
+typedef struct                  // **** Document information ****
 {
   int	Flip,			// Flip/mirror pages
         XPosition,		// Horizontal position on page

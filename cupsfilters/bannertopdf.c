@@ -51,7 +51,7 @@ typedef enum banner_info_e
   INFO_TIME_AT_PROCESSING = 1 << 17       // I - Time at processing
 } banner_info_t;
 
-typedef struct banner_s         //*** Banner data structure ***
+typedef struct banner_s         // Banner data structure
 {
   char *template_file;      // I - Template file path
   char *header, *footer;    // I - Header and footer text

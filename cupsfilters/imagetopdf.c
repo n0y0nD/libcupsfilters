@@ -35,12 +35,12 @@
 // Types...
 //
 
-struct pdfObject        // **** PDF object information ****
+struct pdfObject        // PDF object information
 {
     int offset;     // Offset of object in output file
 };
 
-typedef struct imagetopdf_doc_s         // **** Document information ****
+typedef struct imagetopdf_doc_s         // Document information
 {
   int		Flip,			// Flip/mirror pages
 		XPosition,		// Horizontal position on page

@@ -52,7 +52,7 @@ extern "C" {
 
 typedef int (*cf_filter_iscanceledfunc_t)(void *data);
 
-typedef struct cf_filter_data_s  // *** Data structure for filter functions ***
+typedef struct cf_filter_data_s  // Data structure for filter functions
 {
   char *printer;             // Print queue name or NULL
   int job_id;                // Job ID or 0
@@ -75,7 +75,7 @@ typedef struct cf_filter_data_s  // *** Data structure for filter functions ***
   void *iscanceleddata;      // User data for is-canceled function, can be NULL
 } cf_filter_data_t;
 
-typedef struct cf_filter_data_ext_s   // *** Extension data for cf_filter_data_t ***
+typedef struct cf_filter_data_ext_s   // Extension data for cf_filter_data_t
 {
   char *name;		// Name of the extension data
   void *ext;		// Pointer to the extension data
@@ -85,7 +85,7 @@ typedef int (*cf_filter_function_t)(int inputfd, int outputfd,
 				    int inputseekable, cf_filter_data_t *data,
 				    void *parameters);
 
-typedef enum cf_filter_out_format_e   // *** Possible output formats for filter functions ***
+typedef enum cf_filter_out_format_e   // Possible output formats for filter functions
 {
   CF_FILTER_OUT_FORMAT_PDF,	      // PDF
   CF_FILTER_OUT_FORMAT_PDF_IMAGE,     // Raster-only PDF
@@ -96,14 +96,14 @@ typedef enum cf_filter_out_format_e   // *** Possible output formats for filter 
   CF_FILTER_OUT_FORMAT_PXL            // PCL-XL
 } cf_filter_out_format_t;
 
-typedef struct cf_filter_filter_in_chain_s // *** Filter entry for CUPS array to be supplied to cfFilterChain() filter function ***
+typedef struct cf_filter_filter_in_chain_s // Filter entry for CUPS array to be supplied to cfFilterChain() filter function
 {
   cf_filter_function_t function; // Filter function to be called
   void *parameters;              // Parameters for this filter function call
   char *name;                    // Name/comment, only for logging
 } cf_filter_filter_in_chain_t;
 
-typedef struct cf_filter_external_s // *** Parameters for the cfFilterExternal() filter function ***
+typedef struct cf_filter_external_s // Parameters for the cfFilterExternal() filter function
 {
   const char *filter;        // Path/Name of the CUPS filter to be called by this filter function, required 
   int exec_mode;             // 0 if we call a CUPS filter, -1 if we call a System V interface script, 1 if we call a CUPS backend, 2 if we call a CUPS backend in device discovery mode
@@ -112,7 +112,7 @@ typedef struct cf_filter_external_s // *** Parameters for the cfFilterExternal()
   char **envp;               // Additional environment variables, the already defined ones stay valid but can be overwritten by these ones, NULL if none
 } cf_filter_external_t;
 
-typedef struct cf_filter_texttopdf_parameter_s // *** parameters container of environemnt variables needed by texttopdf filter function ***
+typedef struct cf_filter_texttopdf_parameter_s // parameters container of environemnt variables needed by texttopdf filter function
 {
   char *data_dir;			// Data directory to be used for fonts and charsets, or NULL for default
   char *char_set;			// Charset to be used for prettyprint, or NULL for default
@@ -120,7 +120,7 @@ typedef struct cf_filter_texttopdf_parameter_s // *** parameters container of en
   char *classification;		// Classification to be used for overprint/watermark, or NULL for default
 } cf_filter_texttopdf_parameter_t;
 
-typedef struct cf_filter_universal_parameter_s // *** Contains input and output type to be supplied to the universal function, and also parameters for cfFilterTextToPDF() ***
+typedef struct cf_filter_universal_parameter_s // Contains input and output type to be supplied to the universal function, and also parameters for cfFilterTextToPDF()
 {
   char *actual_output_type;									// Output MIME type 
   cf_filter_texttopdf_parameter_t texttopdf_params;			// Parameters for cfFilterTextToPDF() filter function

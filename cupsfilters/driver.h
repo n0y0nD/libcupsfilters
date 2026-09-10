@@ -61,27 +61,27 @@ extern "C" {
 // Types/structures for the various routines.
 //
 
-typedef struct cf_lut_s			// *** Lookup Table for Dithering ***
+typedef struct cf_lut_s			// Lookup Table for Dithering
 {
   short		intensity;		// Adjusted intensity
   short		pixel;			// Output pixel value
   int		error;			// Error from desired value
 } cf_lut_t;
 
-typedef struct cf_dither_s		// *** Dithering State ***
+typedef struct cf_dither_s		// Dithering State
 {
   int		width;			// Width of buffer
   int		row;			// Current row
   int		errors[96];		// Error values
 } cf_dither_t;
 
-typedef struct cf_sample_s		// *** Color sample point ***
+typedef struct cf_sample_s		// Color sample point
 {
   unsigned char	rgb[3];			// sRGB values
   unsigned char	colors[CF_MAX_RGB];	// Color values
 } cf_sample_t;
 
-typedef struct cf_rgb_s			// *** Color separation lookup table ***
+typedef struct cf_rgb_s			// Color separation lookup table
 {
   int		cube_size;		// Size of color cube (2-N) on a side
   int		num_channels;		// Number of colors per sample
@@ -93,7 +93,7 @@ typedef struct cf_rgb_s			// *** Color separation lookup table ***
   unsigned char	white[CF_MAX_RGB];	// Cached white (sRGB = 255,255,255)
 } cf_rgb_t;
 
-typedef struct cf_cmyk_s		// *** Simple CMYK lookup table ***
+typedef struct cf_cmyk_s		// Simple CMYK lookup table
 {
   unsigned char	black_lut[256];		// Black generation LUT
   unsigned char	color_lut[256];		// Color removal LUT

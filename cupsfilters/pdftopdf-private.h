@@ -29,7 +29,7 @@ typedef enum {
     an_locked_contents = 1 << 9  // Locked contents
 } pdf_annotation_flag;
 
-typedef struct                               // **** Document information ****
+typedef struct                               // Document information
 {
   cf_logfunc_t logfunc;                      // Log function
   void *logdata;                             // Log data
@@ -44,7 +44,7 @@ typedef struct {
     pdfio_obj_t *obj; // Track object pointers for cycle detection
 } VisitedObj;
 
-typedef struct xform_document_s         // *** Document information ***
+typedef struct xform_document_s         // Document information
 {
   const char    *filename,              // Document filename
                 *format;                // Document format
@@ -56,7 +56,7 @@ typedef struct xform_document_s         // *** Document information ***
                 num_pages;              // Number of pages to print in document
 } xform_document_t;       
 
-typedef struct xform_page_s             // *** Output page ***
+typedef struct xform_page_s             // Output page
 {
   pdfio_file_t  *pdf;                   // Output PDF file
   size_t        layout;                 // Current layout cell
@@ -68,7 +68,7 @@ typedef struct xform_page_s             // *** Output page ***
   pdfio_stream_t *output;               // Output page stream
 } xform_page_t;
 
-typedef struct xform_page_ext_s             // *** Output page ***
+typedef struct xform_page_ext_s             // Output page
 {
   pdfio_file_t  *pdf;                   // Output PDF file
   pdfio_obj_t   **input;  // Input page objects
@@ -80,7 +80,7 @@ typedef struct xform_page_ext_s             // *** Output page ***
 } xform_page_ext_t;
 
 
-typedef struct xform_prepare_s          // *** Preparation data ***
+typedef struct xform_prepare_s          // Preparation data
 {
   cf_filter_options_t *options;               // Print options
   cups_array_t  *errors;                // Error messages

@@ -29,7 +29,7 @@ extern "C" {
 // Constants...
 //
 
-typedef enum cf_icspace_e	// **** Image colorspaces ****
+typedef enum cf_icspace_e	// Image colorspaces
 {
   CF_IMAGE_CMYK = -4,		// Cyan, magenta, yellow, and black
   CF_IMAGE_CMY = -3,		// Cyan, magenta, and yellow
@@ -44,13 +44,13 @@ typedef enum cf_icspace_e	// **** Image colorspaces ****
 // Types and structures...
 //
 
-typedef unsigned char cf_ib_t;        // **** Image byte ****
+typedef unsigned char cf_ib_t;        // Image byte
 
 struct cf_image_s;
-typedef struct cf_image_s cf_image_t; // **** Image file data ****
+typedef struct cf_image_s cf_image_t; // Image file data
 
 struct cf_izoom_s;
-typedef struct cf_izoom_s cf_izoom_t; // **** Image zoom data ****
+typedef struct cf_izoom_s cf_izoom_t; // Image zoom data
 
 
 //

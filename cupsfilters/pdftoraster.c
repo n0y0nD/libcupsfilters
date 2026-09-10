@@ -75,7 +75,7 @@
 #define MAX_BYTES_PER_PIXEL 32
 extern int errno;
 
-typedef struct cms_profile_s      // *** Color Management System profile structure ***
+typedef struct cms_profile_s      // Color Management System profile structure
 {
   // for color profiles
   cmsHPROFILE colorProfile;               // color profile
@@ -101,7 +101,7 @@ init_cms_profile_t(cms_profile_t *profile)	// I - profile structure to init
   profile->cm_disabled = 0;
 }
 
-typedef struct pdftoraster_doc_s    // *** PDF to Raster Document Structure ***
+typedef struct pdftoraster_doc_s    // PDF to Raster Document Structure
 {
   char *input_filename;                // Input PDF file name
   int pwgraster;                        // Whether to output PWG Raster (1) or CUPS Raster (0)
@@ -144,7 +144,7 @@ typedef unsigned char *(*convert_line_func)(unsigned char *src,
                                             pdftoraster_doc_t* doc,
                                             convert_cspace_func convertCSpace);
 
-typedef struct pdf_conversion_function_s    // *** PDF Conversion Function Structure ***
+typedef struct pdf_conversion_function_s    // PDF Conversion Function Structure
 {
   convert_cspace_func convertCSpace; // Function for conversion of colorspaces
   convert_line_func convertLineOdd;  // Function to modify raster data of a line
@@ -789,7 +789,7 @@ line_swap_bit(unsigned char *src,
   return (dst);
 }
 
-typedef struct func_table_s           // *** Function Table for Special Edge Cases ***
+typedef struct func_table_s           // Function Table for Special Edge Cases
 {
   enum cups_cspace_e cspace;        // Colour Space
   unsigned int bitsPerPixel;        // Bits per Pixel

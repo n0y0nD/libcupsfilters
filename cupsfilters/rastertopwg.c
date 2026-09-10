@@ -28,11 +28,9 @@
 int					 // O - Exit status
 cfFilterRasterToPWG(int inputfd,         // I - File descriptor input stream
 		    int outputfd,        // I - File descriptor output stream
-		    int inputseekable,   // I - Is input stream seekable?
-		                         //     (unused)
+		    int inputseekable,   // I - Is input stream seekable?(unused)
 		    cf_filter_data_t *data, // I - Job and printer data
-		    void *parameters)    // I - Filter-specific parameters
-                                         //     (unused)
+		    void *parameters)    // I - Filter-specific parameters(unused)
 {
   cups_raster_t		*inras;		// Input raster stream
   cups_raster_t         *outras;	// Output raster stream

@@ -32,7 +32,11 @@ test_convert_line(unsigned char *src, unsigned char *dst,
   return dst;
 }
 
-int
+//
+// 'main()' - Run the regression test.
+//
+
+int           // O - Exit status
 main(void)
 {
   const unsigned int copy_height = 4;

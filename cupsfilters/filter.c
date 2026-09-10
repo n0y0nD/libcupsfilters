@@ -27,7 +27,7 @@
 #include <unistd.h>
 
 
-extern char **environ;
+extern char **environ;      // Environment variables for filter functions
 
 
 //
@@ -237,8 +237,11 @@ cfFilterDataRemoveExt(cf_filter_data_t *data,      // I - Filter data record
 
 
 //
-// 'cfFilterGetEnvVar()' - Get the value of an environment variable from the 
-//                         supplied environment list.
+// 'cfFilterGetEnvVar()' - Auxiliary function for cfFilterExternal(),
+//                         gets value of an environment variable in a
+//                         list of environment variables as used by
+//                         the execve() function.
+//
 //
 
 char *				                 // O - Value of variable, or NULL
@@ -314,8 +317,20 @@ cfFilterAddEnvVar(char *name,      // I - Name of environment variable to set
 
 
 //
-// 'cfFilterTee()' - Copy input data to a file (for debugging) while 
-//                    passing it unchanged to the output.
+// 'cfFilterTee()' - This filter function is mainly for debugging. it
+//                   resembles the "tee" utility, passing through the
+//                   data unfiltered and copying it to a file. The
+//                   file name is simply given as parameter. This
+//                   makes using the function easy (add it as item of
+//                   a filter chain called via cfFilterChain()) and
+//                   can even be used more than once in the same
+//                   filter chain (using different file names). In
+//                   case of write error to the copy file, copying is
+//                   stopped but the rest of the job is passed on to
+//                   the next filter. If NULL is supplied as file
+//                   name, the data is simply passed through without
+//                   getting copied.
+//
 
 int                                 // O - 0 on success, -1 on error
 cfFilterTee(int inputfd,            // I - File descriptor input stream
@@ -939,9 +954,14 @@ sanitize_device_uri(const char *uri,	// I - Device URI
 
 
 //
-// 'cfFilterExternal()' - Filter function that executes an ezternal CUPS filter
-//                        or System V interface script, typically used when conversion
-//                        to a native filter function is not possible.
+// 'cfFilterExternal()' - Filter function which calls an external
+//                        classic CUPS filter or System V interface
+//                        script, for example a (proprietary) printer
+//                        driver which cannot be converted to a filter
+//                        function or if it is too awkward or risky to
+//                        convert for example when the printer
+//                        hardware is not available for testing.
+//
 //
 
 int                                        // O - 0 on success, -1 on error
@@ -1583,10 +1603,18 @@ cfFilterExternal(int inputfd,              // I - File descriptor input stream
 
 
 //
-// 'cfFilterOpenBackAndSidePipes()' - Open the pipes for the back and side channels
-//                                    to allow communication between filter functions and a
-//                                    backend. Used when a CUPS backend runs with the same filter_data.
-//                                    
+// 'cfFilterOpenBackAndSidePipes()' - Open the pipes for the back
+//                                    channel and the side channel, so
+//                                    that the filter functions can
+//                                    communicate with a backend. Only
+//                                    needed if a CUPS backend (either
+//                                    implemented as filter function
+//                                    or called via
+//                                    cfFilterExternal()) is called
+//                                    with the same filter_data record
+//                                    as the filters. Usually to be
+//                                    called when populating the
+//                                    filter_data record.
 //
 
 int                                                  // O - 0 on success, -1 on error

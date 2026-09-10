@@ -34,7 +34,7 @@
 #include <cupsfilters/libcups2-private.h>
 
 
-typedef struct cf_size_s		// **** Media Size (cups_size_t of libcups2) ****
+typedef struct cf_size_s		// Media Size (cups_size_t of libcups2)
 {
   char		media[128];		// Media name to use
   int		width,			// Width in hundredths of millimeters

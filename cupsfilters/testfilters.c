@@ -114,17 +114,17 @@ parse_filter_chain(const char *filter_chain_str,    // I - Comma-separated list 
   return chain;
 }
 
-/*
- * 'create_media_size_range()' - Create a ranged media-size value.
- */
+//
+// 'create_media_size_range()' - Create a ranged media-size value.
+//
 
-static ipp_t *				/* O - media-col collection */
-create_media_size_range(int min_width,	/* I - Minimum x-dimension in 2540ths */
-			int max_width,	/* I - Maximum x-dimension in 2540ths */
-			int min_length,	/* I - Minimum x-dimension in 2540ths */
-			int max_length)	/* I - Maximum y-dimension in 2540ths */
+static ipp_t *				// O - media-col collection 
+create_media_size_range(int min_width,	// I - Minimum x-dimension in 2540ths
+			int max_width,	// I - Maximum x-dimension in 2540ths
+			int min_length,	// I - Minimum x-dimension in 2540ths
+			int max_length)	// I - Maximum y-dimension in 2540ths
 {
-  ipp_t	*media_size = ippNew();		/* media-size value */
+  ipp_t	*media_size = ippNew();		// media-size value
 
 
   ippAddRange(media_size, IPP_TAG_ZERO, "x-dimension", min_width, max_width);
@@ -134,19 +134,19 @@ create_media_size_range(int min_width,	/* I - Minimum x-dimension in 2540ths */
 }
 
 
-static ipp_t *				/* O - media-col collection */
-create_media_col(const char *media,	/* I - Media name */
-		 const char *source,	/* I - Media source, if any */
-		 const char *type,	/* I - Media type, if any */
-		 ipp_t      *media_size,/* I - media-size collection value */
-		 int        bottom,	/* I - Bottom margin in 2540ths */
-		 int        left,	/* I - Left margin in 2540ths */
-		 int        right,	/* I - Right margin in 2540ths */
-		 int        top)	/* I - Top margin in 2540ths */
+static ipp_t *				// O - media-col collection
+create_media_col(const char *media,	// I - Media name
+		 const char *source,	// I - Media source, if any
+		 const char *type,	// I - Media type, if any
+		 ipp_t      *media_size,// I - media-size collection value
+		 int        bottom,	// I - Bottom margin in 2540ths
+		 int        left,	// I - Left margin in 2540ths
+		 int        right,	// I - Right margin in 2540ths
+		 int        top)	// I - Top margin in 2540ths
 {
-  ipp_t		*media_col = ippNew();	/* media-col value */
-  char		media_key[256];		/* media-key value */
-  const char	*media_key_suffix = "";	/* media-key suffix */
+  ipp_t		*media_col = ippNew();	// media-col value
+  char		media_key[256];		// media-key value
+  const char	*media_key_suffix = "";	// media-key suffix
 
 
   if (bottom == 0 && left == 0 && right == 0 && top == 0)
@@ -187,15 +187,15 @@ create_media_col(const char *media,	/* I - Media name */
 }
 
 
-/*
- * 'create_media_size()' - Create a media-size value.
- */
+//
+// 'create_media_size()' - Create a media-size value.
+//
 
-static ipp_t *				/* O - media-col collection */
-create_media_size(int width,		/* I - x-dimension in 2540ths */
-		  int length)		/* I - y-dimension in 2540ths */
+static ipp_t *				// O - media-col collection
+create_media_size(int width,		// I - x-dimension in 2540ths
+		  int length)		// I - y-dimension in 2540ths
 {
-  ipp_t	*media_size = ippNew();		/* media-size value */
+  ipp_t	*media_size = ippNew();		// media-size value
 
 
   ippAddInteger(media_size, IPP_TAG_ZERO, IPP_TAG_INTEGER, "x-dimension", width);
@@ -207,23 +207,6 @@ create_media_size(int width,		/* I - x-dimension in 2540ths */
 //
 // 'test_wrapper()' - Utilizes libcupsfilters API for running a particular test
 //
-//
-
-
-/*
-int					// O - Exit status
-test_wrapper(
-     int  num_clargs,				// I - Number of command-line args
-     char *clargs[],			// I - Command-line arguments
-     void *parameters,                  // I - Filter function parameters
-     int *JobCanceled,			// I - Var set to 1 when job canceled
-     ipp_t* emulated_ipp,
-     char* inputMIME,
-     char* outputMIME,
-     char* inputFile,
-     char* outputFile)                  
-{
-*/
 
 int                         // O - Exit status
 test_wrapper(
@@ -236,12 +219,11 @@ test_wrapper(
 	char* outputMIME,               // I - Output MIME type
     	char* inputFile,            // I - Input file name
 	char* outputFile,               // I - Output file name
-	cups_array_t *filter_chain)
+	cups_array_t *filter_chain)       // I - Array of filters in the chain
 {
   int	        inputfd;		// Print file descriptor
   int 		outputfd;		// File Descriptor for Output File
-  int           inputseekable = 0;          // Is the input seekable (actual file
-					// not stdin)?
+  int           inputseekable = 0;          // Is the input seekable (actual file not stdin)?
   int		num_options = 0;	// Number of print options
   cups_option_t	*options = NULL;	// Print options
   cf_filter_data_t filter_data;
@@ -382,35 +364,35 @@ test_wrapper(
   return retval;
 }
 
-/*
- * 'load_legacy_attributes()' - Load IPP attributes using the old ippserver
- *                              options.
- */
+//
+// 'load_legacy_attributes()' - Load IPP attributes using the old ippserver
+//                              options.
+//
 
 
-static ipp_t *				/* O - IPP attributes or `NULL` on error */
+static ipp_t *				// O - IPP attributes or `NULL` on error
 load_legacy_attributes(
-    const char   *make,			/* I - Manufacturer name */
-    const char   *model,		/* I - Model name */
-    int          ppm,			/* I - pages-per-minute */
-    int          ppm_color,		/* I - pages-per-minute-color */
-    int          duplex,		/* I - Duplex support? */
-    cups_array_t *docformats)		/* I - document-format-supported values */
+    const char   *make,			// I - Manufacturer name
+    const char   *model,		// I - Model name
+    int          ppm,			// I - pages-per-minute
+    int          ppm_color,		// I - pages-per-minute-color
+    int          duplex,		// I - Duplex support?
+    cups_array_t *docformats)		// I - document-format-supported values
 {
-  size_t		i;		/* Looping var */
-  ipp_t			*attrs,		/* IPP attributes */
-			*col;		/* Collection value */
-  ipp_attribute_t	*attr;		/* Current attribute */
-  char			device_id[1024],/* printer-device-id */
-			*ptr,		/* Pointer into device ID */
-			make_model[128];/* printer-make-and-model */
-  const char		*format,	/* Current document format */
-			*prefix;	/* Prefix for device ID */
-  size_t		num_media;	/* Number of media */
-  const char * const	*media;		/* List of media */
-  size_t		num_ready;	/* Number of loaded media */
-  const char * const	*ready;		/* List of loaded media */
-  pwg_media_t		*pwg;		/* PWG media size information */
+  size_t		i;		// Looping var
+  ipp_t			*attrs,		// IPP attributes
+			*col;		// Collection value
+  ipp_attribute_t	*attr;		// Current attribute
+  char			device_id[1024], // printer-device-id 
+			*ptr,		// Pointer into device ID
+			make_model[128];// printer-make-and-model
+  const char		*format,	// Current document format
+			*prefix;	// Prefix for device ID
+  size_t		num_media;	// Number of media
+  const char * const	*media;		// List of media
+  size_t		num_ready;	// Number of loaded media
+  const char * const	*ready;		// List of loaded media
+  pwg_media_t		*pwg;		// PWG media size information
   static const char * const media_supported[] =
   {					/* media-supported values */
     "na_letter_8.5x11in",		/* Letter */

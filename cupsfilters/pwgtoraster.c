@@ -67,7 +67,7 @@
 
 #define MAX_BYTES_PER_PIXEL 32
 
-typedef struct cms_profile_s      // *** for color management ***
+typedef struct cms_profile_s      // for color management
 {
   // for color profiles
   cmsHPROFILE colorProfile;         // ICC profile
@@ -79,7 +79,7 @@ typedef struct cms_profile_s      // *** for color management ***
   cf_cm_calibration_t cm_calibrate;   // Status of CUPS color management
 } cms_profile_t;
 
-typedef struct pwgtoraster_doc_s      // *** Document information ***
+typedef struct pwgtoraster_doc_s      // Document information
 {
   cf_filter_data_t *data;             // Filter data
   bool page_size_requested;           // Flag indicating if page size is requested
@@ -117,7 +117,7 @@ typedef unsigned char *(*convert_line_func)(unsigned char *src,
 					    pwgtoraster_doc_t* doc,
 					    convert_cspace_func convertCSpace);
 
-typedef struct conversion_function_s        // *** Conversion function information ***
+typedef struct conversion_function_s        // Conversion function information
 {
   convert_cspace_func convertCSpace; // Function for conversion of colorspaces
   convert_line_func convertLineOdd;  // Function to modify raster data of a line
@@ -609,7 +609,7 @@ line_swap_bit(unsigned char *src,
 }
 
 
-typedef struct func_table_s     // *** Conversion function table for special cases ***
+typedef struct func_table_s     // Conversion function table for special cases
 {
   enum cups_cspace_e cspace;      // CUPS colorspace
   unsigned int bitsPerPixel;      // Bits per pixel

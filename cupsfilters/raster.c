@@ -154,7 +154,7 @@ cfRasterColorSpaceString(cups_cspace_t cspace)	// I - cupsColorSpace value
 
 
 //
-// 'cfRasterPrepareHeader() - This function creates a CUPS/PWG Raster
+// 'cfRasterPrepareHeader()' - This function creates a CUPS/PWG Raster
 //                            header for Raster output based on the
 //                            printer and job properties supplied to
 //                            the calling filter functions, printer
@@ -560,7 +560,7 @@ cfRasterPrepareHeader(cups_page_header_t *h,   // I  - Raster header
 
 
 //
-// 'cfRasterSetColorSpace() - Update a given CUPS/PWG Raster header to
+// 'cfRasterSetColorSpace()' - Update a given CUPS/PWG Raster header to
 //                            the desired color mode, color space, and
 //                            color depth. We supply one of the
 //                            printer IPP attributes urf-supported or

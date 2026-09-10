@@ -76,7 +76,7 @@ typedef enum cf_backside_orient_e		// Backside orientation for duplex printing
 
 
 // Data structure for resolution (X x Y dpi)
-typedef struct cf_res_s				// **** Resolution (X x Y dpi) ****
+typedef struct cf_res_s				// Resolution (X x Y dpi)
 {
   int x, y;					// X and Y resolution in dpi
 } cf_res_t;
