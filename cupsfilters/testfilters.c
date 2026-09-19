@@ -1139,7 +1139,8 @@ run_test(
   token = remove_white_space(token);
   //printf( "%s\n", token ); //printing each token
    
-  strcpy(inputFileName, token);
+ strncpy(inputFileName, token, sizeof(inputFileName) - 1);
+  inputFileName[sizeof(inputFileName) - 1] = '\0';
    
   int token_index = 1;
    
@@ -1277,6 +1278,11 @@ int                       // O - Exit status
     return EXIT_FAILURE;
   }
   file_name = argv[1];
+  // Validate that file_name doesn't contain suspicious path traversal
+  if (strchr(file_name, '/') != NULL || strchr(file_name, '\\') != NULL) {
+    fprintf(stderr, "Invalid file path\n");
+    return EXIT_FAILURE;
+  }
   fp = fopen(file_name, "r");
   if (!fp)
   {
