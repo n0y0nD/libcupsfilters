@@ -83,7 +83,7 @@
 // Types and structures...
 //
 
-typedef enum cf_iztype_e		// **** Image zoom type ****
+typedef enum cf_iztype_e		// Image zoom type
 {
   CF_IZOOM_FAST,			// Use nearest-neighbor sampling
   CF_IZOOM_NORMAL,			// Use bilinear interpolation
@@ -92,7 +92,7 @@ typedef enum cf_iztype_e		// **** Image zoom type ****
 
 struct cf_ic_s;
 
-typedef struct cf_itile_s		// **** Image tile ****
+typedef struct cf_itile_s		// Image tile
 {
   int			dirty;		// True if tile is dirty
   off_t			pos;		// Position of tile on disk (-1 if not
@@ -100,7 +100,7 @@ typedef struct cf_itile_s		// **** Image tile ****
   struct cf_ic_s	*ic;		// Pixel data
 } cf_itile_t;
 
-typedef struct cf_ic_s			// **** Image tile cache ****
+typedef struct cf_ic_s			// Image tile cache
 {
   struct cf_ic_s	*prev,		// Previous tile in cache
 			*next;		// Next tile in cache
@@ -108,7 +108,7 @@ typedef struct cf_ic_s			// **** Image tile cache ****
   cf_ib_t		*pixels;	// Pixel data
 } cf_ic_t;
 
-struct cf_image_s			// **** Image file data ****
+struct cf_image_s			// Image file data
 {
   cf_icspace_t		colorspace;	// Colorspace of image
   unsigned		xsize,		// Width of image in pixels
@@ -124,7 +124,7 @@ struct cf_image_s			// **** Image file data ****
   char			cachename[256];	// Tile cache filename
 };
 
-struct cf_izoom_s			// **** Image zoom data ****
+struct cf_izoom_s			// Image zoom data
 {
   cf_image_t		*img;		// Image to zoom
   cf_iztype_t		type;		// Type of zooming

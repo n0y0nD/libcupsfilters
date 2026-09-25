@@ -19,8 +19,8 @@ extern "C" {
 // Types...
 //
 
-typedef enum cf_loglevel_e           // Log levels, same as PAPPL, similar
-{				     // to CUPS
+typedef enum cf_loglevel_e           // Log levels, same as PAPPL, similar to CUPS
+{
   CF_LOGLEVEL_UNSPEC = -1,           // Not specified
   CF_LOGLEVEL_DEBUG,                 // Debug message
   CF_LOGLEVEL_INFO,                  // Informational message

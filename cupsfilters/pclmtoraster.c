@@ -36,13 +36,12 @@ typedef struct pclmtoraster_data_s
   int rowsize;			// size of a row
   cups_page_header_t header;	// CUPS page header
   char pageSizeRequested[64];	// Requested page size name
-  int bi_level;			// flag for printing
-  // image swapping
-  int swap_image_x;
-  int swap_image_y;
+  int bi_level;			// flag for printing image swapping
+  int swap_image_x; // image swapping
+  int swap_image_y; // image swapping
   // margin swapping
-  int swap_margin_x;
-  int swap_margin_y;
+  int swap_margin_x;   // flag for printing margin swapping
+  int swap_margin_y;   // flag for printing margin swapping
   unsigned int nplanes;		// Number of colour planes
   unsigned int nbands;		// Number of colour bands
   unsigned int bytesPerLine;	// bytes per line in output
@@ -55,7 +54,7 @@ typedef struct pclmtoraster_data_s
 // 'init_pclmtoraster_data_t()' - initialize the data structure with default values.
 //
 
-void 							  // O - void output
+void
 init_pclmtoraster_data_t(pclmtoraster_data_t *data)	// I - pclm data to initialize
 {
   data->outformat = CF_FILTER_OUT_FORMAT_PWG_RASTER;

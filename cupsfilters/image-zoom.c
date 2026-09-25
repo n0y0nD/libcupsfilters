@@ -81,8 +81,7 @@ _cfImageZoomNew(
     int           yc1,			// I - ...
     int           xsize,		// I - Final width of image
     int           ysize,		// I - Final height of image
-    int           rotated,		// I - Non-zero if image is rotated 90
-                                        //     degrees
+    int           rotated,		// I - Non-zero if image is rotated 90 degrees
     cf_iztype_t type)			// I - Zoom type
 {
   cf_izoom_t	*z;			// New zoom record

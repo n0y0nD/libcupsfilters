@@ -9,7 +9,11 @@
 #include "debug-internal.h"
 #include <string.h>
 
-int
+//
+// 'main()' - Run the regression test.
+//
+
+int           // O - Exit status
 main()
 {
   _cf_pdf_out_t *pdf;
@@ -54,7 +58,6 @@ main()
 		 ">>\n"
 		 "endobj\n",
 		 obj, PageWidth, PageLength, cobj, font_obj);
-                                                     // TODO: into pdf->
   _cfPDFOutAddPage(pdf, obj);
   _cfPDFOutFinishPDF(pdf);
 
